@@ -9,6 +9,13 @@ use NathanHeffley\LaravelSlackBlocks\Messages\SlackBlock;
 class SlackMessage extends LaravelSlackMessage
 {
     /**
+     * The message's timestamp.
+     *
+     * @var string
+     */
+    public $ts;
+
+    /**
      * The message's blocks.
      *
      * @var array
@@ -41,6 +48,19 @@ class SlackMessage extends LaravelSlackMessage
         $this->blocks[] = $block = new SlackBlock;
 
         $callback($block);
+
+        return $this;
+    }
+
+    /**
+     * Add a block to the timestamp.
+     *
+     * @param string $ts
+     * @return $this
+     */
+    public function ts($ts)
+    {
+        $this->ts = $ts;
 
         return $this;
     }

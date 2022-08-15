@@ -30,6 +30,7 @@ class SlackWebhookChannel extends LaravelSlackWebhookChannel
     protected function buildJsonPayload(SlackMessage $message)
     {
         $optionalFields = array_filter([
+            'ts' => data_get($message, 'ts'),
             'channel' => data_get($message, 'channel'),
             'icon_emoji' => data_get($message, 'icon'),
             'icon_url' => data_get($message, 'image'),
